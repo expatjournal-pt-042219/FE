@@ -5,16 +5,17 @@ import Body from "./Components/Body/Body";
 import Footer from "./Components/Footer/Footer";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import styled from "styled-components";
+import BackgroundImg from "./Background.jpg";
 
 const BackgroundLayer = styled.div`
   text-align: center;
-  background: lightgrey;
+  background: url(${BackgroundImg});
   color:white;
   height: 100%;
   background-size: cover;
   min-height: 100vh;
   background-repeat:no-repeat;
-  
+
 `;
 
 

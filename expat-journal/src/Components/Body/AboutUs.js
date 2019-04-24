@@ -5,16 +5,22 @@ import styled from "styled-components";
   
 // `;
 
-// const LinkWrapper = styled.div`
+const Wrapper = styled.div`
+background: rgb(0, 0, 0); /* The Fallback */
+background: rgba(0,0,0, .5);
+width: 80%;
+padding-top: 4%;
+padding-bottom: 4%;
+margin: 4% auto;;
+`;
 
-// `;
 
 class About extends Component {
   render() {
     return (
-      <div>
-        <h1>This is the About Us Component!</h1>
-      </div>
+      <Wrapper>
+        <h2>This is the About Us Component!</h2>
+      </Wrapper>
     );
   }
 }
