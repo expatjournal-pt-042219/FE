@@ -1,14 +1,29 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./Components/Header/Header";
+import Body from "./Components/Body/Body";
+import Footer from "./Components/Footer/Footer";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import styled from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <div>
-        <h1>This is the Expat Journal!</h1>
-      </div>
-    </div>
-  );
+const BackgroundLayer = styled.div`
+  
+  
+`;
+
+
+class App extends Component {
+  render() {
+    return (
+      <BackgroundLayer>
+          <Header />
+          <Router>
+            <Body />
+          </Router>
+          <Footer />
+      </BackgroundLayer>
+    );
+  }
 }
 
 export default App;
