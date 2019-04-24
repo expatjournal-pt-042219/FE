@@ -9,11 +9,22 @@ import Home from "./Home";
 import styled from "styled-components";
 
 const StyledLink = styled(Link)`
-  
+  color: white;
+  text-decoration: none;
+  padding: 2%;
+  &:hover{
+    color:aqua;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+  }
 `;
 
 const LinkWrapper = styled.div`
-
+  background: rgb(0, 0, 0); /* The Fallback */
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding-top: 4%;
+  padding-bottom: 4%;
 `;
 
 class Body extends Component {

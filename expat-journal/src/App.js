@@ -7,7 +7,13 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
 const BackgroundLayer = styled.div`
-  
+  text-align: center;
+  background: lightgrey;
+  color:white;
+  height: 100%;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat:no-repeat;
   
 `;
 

@@ -13,7 +13,7 @@ class MyTravels extends Component {
   render() {
     return (
       <div>
-        <h1>This are my travels!</h1>
+        <h1>These are my travels!</h1>
       </div>
     );
   }
