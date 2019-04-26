@@ -27,7 +27,7 @@ const Header = styled.h2`
 `;
 
 const StyledLink = styled(Link)`
-  border: 2px solid #d3d2d3
+  border: 2px solid black
   width: 23%;
   margin: 2%;
   background-color:white;
