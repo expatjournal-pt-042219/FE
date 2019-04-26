@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import PostAlbum from "./Posts/PostAlbum";
+import axios from "axios";
+import { Route, Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-
+import NewPost from "./Albums/Posts/NewPostForm";
+import ViewPost from "./Albums/Posts/ViewPost";
+import EditPost from "./Albums/Posts/EditPost";
 // const StyledLink = styled(Link)`
 
 // `;
@@ -15,10 +20,27 @@ const Wrapper = styled.div`
 `;
 
 class MyTravels extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    };
+  }
   render() {
     return (
       <Wrapper>
-        <h2>These are my travels!</h2>
+          <Route
+            path="/PostsList"
+            exact
+            render={props => <PostAlbum {...props} />}
+          />
+          <Route path="/NewPost" exact component={NewPost} />
+          <Route
+            exact
+            path="/post/:id"
+            render={props => <ViewPost {...props} />}
+          />
+          <Route path="/post/edit/:id" component={EditPost} />
       </Wrapper>
     );
   }
