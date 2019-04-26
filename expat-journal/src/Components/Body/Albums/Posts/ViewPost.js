@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, Route, NavLink } from "react-router-dom";
-import DeleteNote from "./DeleteNote";
-import EditNote from "./EditNote";
+import DeletePost from "./DeletePost";
+import EditPost from "./EditPost";
 import styled from "styled-components";
 
 //Styling//
-const ViewNoteContainer = styled.div`
+const ViewPostContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,7 +19,7 @@ const EditDelete = styled.div`
   margin:15%;
 `;
 
-const NoteBox = styled.div`
+const PostBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -39,7 +39,7 @@ class ViewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      note: {},
+      Post: {},
       loading: true,
       isHidden: true
     };
@@ -47,15 +47,15 @@ class ViewPost extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.fetchNote(id);
+    this.fetchPost(id);
   }
 
-//   fetchNote = id => {
+//   fetchPost = id => {
 //     axios
 //       .get(`/${id}`)
 //       .then(response => {
 //         this.setState({
-//           note: response.data,
+//           post: response.data,
 //           loading: false
 //         });
 //       })

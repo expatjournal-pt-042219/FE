@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PostAlbum from "./Posts/PostAlbum";
+import PostAlbum from "./Albums/Posts/PostAlbum";
 import axios from "axios";
 import { Route, Link, NavLink } from "react-router-dom";
 import styled from "styled-components";

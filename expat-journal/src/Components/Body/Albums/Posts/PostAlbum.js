@@ -67,8 +67,8 @@ class Posts extends Component {
   render() {
     return (
       <StyledList>
-        <Header>Your Notes:</Header>
-        {this.state.posts.map(note => {
+        <Header>Your Posts:</Header>
+        {this.state.posts.map(post => {
           return (
             <StyledLink to={`Post/${post._id}`}>
               <Title>{post.title}</Title>
