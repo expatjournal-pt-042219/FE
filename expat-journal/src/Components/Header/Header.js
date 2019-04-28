@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Login from "./Login";
+import AuthenticationGroup from "./AuthenticationGroup";
 import SignUp from "./SignUp";
+import InputField from "./Input";
 
 const Banner = styled.h1`
   margin: 0;
@@ -21,8 +22,7 @@ class Header extends Component {
     return (
       <Wrapper>
         <Banner>This is the Header!</Banner>
-        <Login/>
-        <SignUp/>
+        <AuthenticationGroup/>
       </Wrapper>
     );
   }

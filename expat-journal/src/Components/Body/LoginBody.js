@@ -15,7 +15,7 @@ margin: 4% auto;
 `;
 
 
-class LogIn extends Component {
+class LoginBody extends Component {
   render() {
     return (
       <Wrapper>
@@ -25,4 +25,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default LoginBody;
