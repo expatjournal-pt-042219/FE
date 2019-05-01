@@ -23,6 +23,7 @@ class Header extends Component {
       <Wrapper>
         <Banner>This is the Header!</Banner>
         <AuthenticationGroup/>
+        <SignUp />
       </Wrapper>
     );
   }
