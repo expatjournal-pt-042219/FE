@@ -21,7 +21,7 @@ class AuthenticationGroup extends React.Component {
 
     componentDidMount(){
       axios
-        .get('http://localhost:7777/api/login')
+        .get('https://expat-lambda.herokuapp.com/api/login')
         .then(response => {
           console.log("put response", response.data)
           this.setState({login: response.data})
@@ -32,7 +32,7 @@ class AuthenticationGroup extends React.Component {
     AddLogin = id => {
       console.log('Login Successful!')
       axios
-        .post(`http://localhost:7777/api/login/${id}`)
+        .post(`https://expat-lambda.herokuapp.com/api/login${id}`)
         .then(response => {
           console.log("LOGIN RESPONSE", response.data)
           this.setState({ login: response.data})

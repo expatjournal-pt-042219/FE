@@ -22,7 +22,7 @@ class SignUp extends React.Component {
 
   componentDidMount(){
     axios
-      .get('http://localhost:7777/api/register')
+      .get('https://expat-lambda.herokuapp.com/api/registration')
       .then(response => {
         console.log("put response", response.data)
         this.setState({signup: response.data})
@@ -33,7 +33,7 @@ class SignUp extends React.Component {
   AddSignUp = id => {
     console.log('Sign Up Successful!')
     axios
-      .post(`http:localhost:7777/api/register${id}`)
+      .post(`https://expat-lambda.herokuapp.com/api/registration${id}`)
       .then(response => {
         console.log("SIGNUP RESPONSE", response.data)
         this.setState({ signup: response.data})
