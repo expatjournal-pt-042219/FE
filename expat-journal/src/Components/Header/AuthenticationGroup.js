@@ -24,7 +24,7 @@ class AuthenticationGroup extends React.Component {
         .get('http://localhost:7777/api/login')
         .then(response => {
           console.log("put response", response.data)
-          this.setState({friends: response.data})
+          this.setState({login: response.data})
         })
         .catch(err => console.error("you got an error:", err));
     }

@@ -20,11 +20,12 @@ class SignUp extends React.Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     axios
       .get('http://localhost:7777/api/register')
       .then(response => {
         console.log("put response", response.data)
+        this.setState({signup: response.data})
       })
       .catch(err => console.error("you got an error:", err));
   }
