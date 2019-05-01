@@ -12,8 +12,8 @@ class AuthenticationGroup extends React.Component {
     constructor() {
       super();
       this.state = {
-        username: "Shayan",
-        password: "avengers",
+        username: "",
+        password: "",
         token: ""
       };
     }
@@ -22,29 +22,38 @@ class AuthenticationGroup extends React.Component {
     componentDidMount(){
       axios
         .get('http://localhost:7777/api/login')
-        .then(response => this.setState({items: response.data}))
-        .catch(error => console.log(error));
+        .then(response => {
+          console.log("put response", response.data)
+          this.setState({friends: response.data})
+        })
+        .catch(err => console.error("you got an error:", err));
     }
 
-    AddLogin = (e, login) => {
-      e.preventDefault();
+    AddLogin = id => {
+      console.log('Login Successful!')
       axios
-        .post('http://localhost:7777/api/login', AddLogin)
-        .then(res => {
-          this.setState({
-            login: res.data
-          });
-          this.props.history.push('login');
+        .post(`http://localhost:7777/api/login/${id}`)
+        .then(response => {
+          console.log("LOGIN RESPONSE", response.data)
+          this.setState({ login: response.data})
         })
-        .catch(err => {
-          console.log(err);
-        });
+        .catch(err => console.error('login error:', err))
     }
+
+    AddLogin = e => {
+        this.setState({
+          loginInfo: {
+            ...this.state.AddLogin,
+            [e.target.name]: e.target.value
+          }
+       })
+    }
+
 
     onChangeHandler = (e) => {
         const {name, value} = e.target;
         this.setState({[name]: value});
-    };
+    }
 
     loginHandler = () => {
         localStorage.setItem('token', JSON.stringify(this.matchCredentials(this.state.username, this.state.password)));

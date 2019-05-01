@@ -3,43 +3,50 @@ import InputField from "./Input";
 import Button from "../Button";
 import axios from 'axios';
 
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+// export const LOGIN_USER = 'LOGIN_USER';
+// export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+// export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
 
 
-// const registerUser = ({user}) => {
-// //   return postData(
-// //     "http://localhost:7777/api/register",
-// //     user
-// //   )
-// //     .then(res => res)
-// //     .then(success => console.log(success))
-// //     .catch(error => console.error(error));
-// // };
+class SignUp extends React.Component {
 
-export const loginUser = (user) => {
-  return axios
-    .post('http://localhost:7777/api/login', user)
-    .then(response =>
-      console.log(response)
-    )
-    .catch(error => console.error(error));
-};
-
-
-
-
-class SignUp extends Component {
-    state = {
-        username: "",
-        password: "",
-        token: ""
-    }
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      password: "",
+      token: ""
+    };
+  }
 
   componentDidMount = () => {
-    loginUser({username: 'Shayan', password:'avengers'});
+    axios
+      .get('http://localhost:7777/api/register')
+      .then(response => {
+        console.log("put response", response.data)
+      })
+      .catch(err => console.error("you got an error:", err));
+  }
+
+  AddSignUp = id => {
+    console.log('Sign Up Successful!')
+    axios
+      .post(`http:localhost:7777/api/register${id}`)
+      .then(response => {
+        console.log("SIGNUP RESPONSE", response.data)
+        this.setState({ signup: response.data})
+      })
+      .catch(err => console.error("signup error:", err));
+  }
+
+  AddSignUp = e => {
+    this.setState({
+      signupInfo: {
+        ...this.state.AddSignUp,
+        [e.target.name]: e.target.value
+      }
+    })
   }
 
   onChangeHandler = (e) => {
