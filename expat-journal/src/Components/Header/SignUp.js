@@ -18,13 +18,21 @@ class SignUp extends React.Component {
 
 
 
-  registerHandler = id => {
+  registerHandler = (e) => {
+    e.preventDefault()
     console.log('Sign Up Successful!')
+    let user = {"username": this.state.username, "password": this.state.password}
     axios
-      .post(`https://expat-lambda.herokuapp.com/api/registration${id}`)
+      .post(`https://expat-lambda.herokuapp.com/api/registration`, user)
       .then(response => {
         console.log("SIGNUP RESPONSE", response.data)
         localStorage.setItem('token', (response.data.token));
+        const token= localStorage.getItem('jwt');
+        const reqOptions = {
+          headers:{
+            Authorization:token
+          }
+        }
       })
       .catch(err => console.error("signup error:", err));
   }
@@ -44,6 +52,12 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
+        <InputField
+          name="username"
+          placeholder="Username"
+          type="text"
+          onChange={this.onChangeHandler}
+        />
         <InputField
           name="password"
           placeholder="Password"
