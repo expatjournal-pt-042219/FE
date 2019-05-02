@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import MyTravels from "./MyTravels";
 import AboutUs from "./AboutUs";
-import LogIn from "./Login";
+import LoginBody from "./LoginBody";
 import Home from "./Home";
 
 import styled from "styled-components";
@@ -43,7 +43,7 @@ class Body extends Component {
 
         </LinkWrapper>
 
-        <Route path="/" exact component={LogIn} />
+        <Route path="/" exact component={LoginBody} />
         <Route path="/Home" exact component={Home} />
         <Route path="/MyTravels/" component={MyTravels} />
         <Route path="/AboutUs/" component={AboutUs} />
