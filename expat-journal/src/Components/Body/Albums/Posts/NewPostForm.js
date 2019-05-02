@@ -56,19 +56,19 @@ class NewPost extends Component {
     });
   };
 
-  //   addNew = e => {
-  //     e.preventDefault();
-  //     axios
-  //       .post(`/post/create`, this.state)
-  //       .then(response => {
-  //         this.props.addNoteOnServer(response.data);
-  //       })
-  //       .catch(err => console.log("Error", err));
-  //     this.setState({
-  //       title: "",
-  //       textBody: ""
-  //     });
-  //   };
+    addNew = e => {
+      e.preventDefault();
+      axios
+        .post(`https://expat-lambda.herokuapp.com/api/posts/post/create`, this.state)
+        .then(response => {
+          this.props.addNoteOnServer(response.data);
+        })
+        .catch(err => console.log("Error", err));
+      this.setState({
+        title: "",
+        textBody: ""
+      });
+    };
 
   render() {
     return (

@@ -55,6 +55,12 @@ class MyTravels extends Component {
         <p>Insert featured photo here!</p>
         </StyledLink>
         </AlbumWrapper>
+
+        <StyledLink to="/NewPost">
+        <h2>New Posts</h2>
+ 
+        </StyledLink>
+
         <Route path="/PostsList" exact render={props => <PostAlbum {...props} />} />
         <Route path="/NewPost" exact component={NewPost} />
         <Route exact path="/post/:id" render={props => <ViewPost {...props} />} />

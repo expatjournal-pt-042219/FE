@@ -50,19 +50,19 @@ class ViewPost extends Component {
     this.fetchPost(id);
   }
 
-//   fetchPost = id => {
-//     axios
-//       .get(`/${id}`)
-//       .then(response => {
-//         this.setState({
-//           post: response.data,
-//           loading: false
-//         });
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   };
+  fetchPost = id => {
+    axios
+      .get(`https://expat-lambda.herokuapp.com/api/user/posts/${id}`)
+      .then(response => {
+        this.setState({
+          post: response.data,
+          loading: false
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   toggleHidden() {
     this.setState({

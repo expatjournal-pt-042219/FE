@@ -50,19 +50,19 @@ class Posts extends Component {
 
   //Get request to get posts for the list.//
 
-  //   componentDidMount() {
-  //     axios
-  //       .get(``)
+    componentDidMount() {
+      axios
+        .get(`https://expat-lambda.herokuapp.com/api/user/posts/:id`)
 
-  //       .then(response => {
-  //         console.log(response);
-  //         this.setState({
-  //           posts: response.data,
-  //           loading: false
-  //         });
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
+        .then(response => {
+          console.log(response);
+          this.setState({
+            posts: response.data,
+            loading: false
+          });
+        })
+        .catch(err => console.log(err));
+    }
 
   render() {
     return (
@@ -73,7 +73,7 @@ class Posts extends Component {
             <StyledLink to={`Post/${post._id}`}>
               <Title>{post.title}</Title>
               <hr />
-              <Body>{post.textBody.substr(0, 100)} </Body>
+              <Body>{post.description.substr(0, 100)} </Body>
             </StyledLink>
           );
         })}
