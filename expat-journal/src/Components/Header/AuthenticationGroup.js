@@ -18,6 +18,14 @@ class AuthenticationGroup extends React.Component {
       };
     }
 
+  //
+  // const token= localStorage.getItem('jwt');
+  // const reqOptions = {
+  //   headers:{
+  //     Authorization:token
+  //   }
+  // }
+
     loginHandler = (e) => {
       e.preventDefault()
       console.log('Login Successful!')
@@ -28,12 +36,6 @@ class AuthenticationGroup extends React.Component {
         .then(response => {
           console.log("LOGIN RESPONSE", response.data)
           localStorage.setItem('token', (response.data.token));
-          const token= localStorage.getItem('jwt');
-          const reqOptions = {
-            headers:{
-              Authorization:token
-            }
-          }
         })
         .catch(err => console.error('login error:', err))
     }

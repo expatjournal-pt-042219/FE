@@ -16,23 +16,25 @@ class SignUp extends React.Component {
     };
   }
 
+  // const token= localStorage.getItem('jwt');
+  // const reqOptions = {
+  //   headers:{
+  //     Authorization:token
+  //   }
+  // }
+
 
 
   registerHandler = (e) => {
     e.preventDefault()
     console.log('Sign Up Successful!')
-    let user = {"username": this.state.username, "password": this.state.password}
+    let user = {username: this.state.username, password: this.state.password}
+    console.log(user)
     axios
-      .post(`https://expat-lambda.herokuapp.com/api/registration`, user)
+      .post('https://expat-lambda.herokuapp.com/api/register', user)
       .then(response => {
-        console.log("SIGNUP RESPONSE", response.data)
+        console.log(response.data)
         localStorage.setItem('token', (response.data.token));
-        const token= localStorage.getItem('jwt');
-        const reqOptions = {
-          headers:{
-            Authorization:token
-          }
-        }
       })
       .catch(err => console.error("signup error:", err));
   }
@@ -41,11 +43,6 @@ class SignUp extends React.Component {
   onChangeHandler = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value});
-  };
-
-
-  registerHandler = () => {
-    console.log(this.state);
   };
 
 
