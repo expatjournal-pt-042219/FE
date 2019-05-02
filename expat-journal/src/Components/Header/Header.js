@@ -21,9 +21,11 @@ class Header extends Component {
   render() {
     return (
       <Wrapper>
+
         <Banner>This is the Header!</Banner>
         <AuthenticationGroup/>
         <SignUp />
+        <Banner>Ex.com</Banner>
       </Wrapper>
     );
   }
