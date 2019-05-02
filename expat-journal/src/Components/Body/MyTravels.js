@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PostAlbum from "./Albums/Posts/PostAlbum";
 import axios from "axios";
-import { Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NewPost from "./Albums/Posts/NewPostForm";
 import ViewPost from "./Albums/Posts/ViewPost";
@@ -45,6 +45,7 @@ class MyTravels extends Component {
   render() {
     return (
       <Wrapper>
+        <Router>
         <AlbumWrapper>
         <StyledLink to="/PostsList">
         <h2>Posts</h2>
@@ -55,17 +56,12 @@ class MyTravels extends Component {
         <p>Insert featured photo here!</p>
         </StyledLink>
         </AlbumWrapper>
-
-        <StyledLink to="/NewPost">
-        <h2>New Posts</h2>
- 
-        </StyledLink>
-
         <Route path="/PostsList" exact render={props => <PostAlbum {...props} />} />
         <Route path="/NewPost" exact component={NewPost} />
         <Route exact path="/post/:id" render={props => <ViewPost {...props} />} />
         <Route path="/post/edit/:id" component={EditPost} />
         <Route path="/photos" component={PhotoAlbum} />
+        </Router>
       </Wrapper>
     );
   }

@@ -3,7 +3,7 @@ import Post from "./Post";
 import styled from "styled-components";
 import { Route, Link, NavLink } from "react-router-dom";
 import axios from "axios";
-
+import NewPost from "./NewPostForm";
 //Styling//
 
 const Title = styled.h3`
@@ -67,7 +67,7 @@ class Posts extends Component {
   render() {
     return (
       <StyledList>
-        <Header>Your Posts:</Header>
+        <Header>My Posts:</Header>
         {this.state.posts.map(post => {
           return (
             <StyledLink to={`Post/${post._id}`}>
@@ -77,6 +77,7 @@ class Posts extends Component {
             </StyledLink>
           );
         })}
+        <NewPost/>
       </StyledList>
     );
   }
