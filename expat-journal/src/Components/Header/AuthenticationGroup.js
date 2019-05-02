@@ -18,35 +18,17 @@ class AuthenticationGroup extends React.Component {
       };
     }
 
-
-    componentDidMount(){
-      axios
-        .get('https://expat-lambda.herokuapp.com/api/login')
-        .then(response => {
-          console.log("put response", response.data)
-          this.setState({login: response.data})
-        })
-        .catch(err => console.error("you got an error:", err));
-    }
-
-    AddLogin = id => {
+    loginHandler = () => {
       console.log('Login Successful!')
+      let user = {"username": this.state.username, "password": this.state.password}
+      console.log(user)
       axios
-        .post(`https://expat-lambda.herokuapp.com/api/login${id}`)
+        .post(`https://expat-lambda.herokuapp.com/api/login`, user)
         .then(response => {
           console.log("LOGIN RESPONSE", response.data)
-          this.setState({ login: response.data})
+          localStorage.setItem('token', (response.data.token));
         })
         .catch(err => console.error('login error:', err))
-    }
-
-    AddLogin = e => {
-        this.setState({
-          loginInfo: {
-            ...this.state.AddLogin,
-            [e.target.name]: e.target.value
-          }
-       })
     }
 
 
@@ -55,50 +37,23 @@ class AuthenticationGroup extends React.Component {
         this.setState({[name]: value});
     }
 
-    loginHandler = () => {
-        localStorage.setItem('token', JSON.stringify(this.matchCredentials(this.state.username, this.state.password)));
-    };
-
-    matchCredentials = (username, password) => {
-        const usernameToMatch = "123@gmail.com";
-        const passwordToMatch = "123123";
-        const token = "18238127371823172";
-
-      const isValid = (username === usernameToMatch.toLowerCase() && password === passwordToMatch.toLowerCase());
-
-      if (isValid) {
-          return token;
-      } else {
-          return "Error";
-      }
-    };
-
-    registerHandler = () => {
+    registerHandler = (e) => {
       console.log(this.state);
     };
 
 
     render() {
-        const {username, password} = this.state;
 
         return (
             <div>
                 <InputField
                   name="username"
-                  value={username}
                   placeholder="Username"
                   type="text"
                   onChange={this.onChangeHandler}
                 />
-                <InputField
-                  name="password"
-                  value={password}
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.onChangeHandler}
-                />
                 <Button text="Login" onClick={this.loginHandler}/>
-                <Button text="Register" onClick={this.registerHandler}/>
+                {/*<Button text="Register" onClick={this.registerHandler}/>*/}
             </div>
         )
     }
