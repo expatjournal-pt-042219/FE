@@ -3,7 +3,6 @@ import PostAlbum from "./Albums/Posts/PostAlbum";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import NewPost from "./Albums/Posts/NewPostForm";
 import ViewPost from "./Albums/Posts/ViewPost";
 import EditPost from "./Albums/Posts/EditPost";
 import PhotoAlbum from "./Albums/Photos/PhotoAlbum";
@@ -57,7 +56,6 @@ class MyTravels extends Component {
         </StyledLink>
         </AlbumWrapper>
         <Route path="/PostsList" exact render={props => <PostAlbum {...props} />} />
-        <Route path="/NewPost" exact component={NewPost} />
         <Route exact path="/post/:id" render={props => <ViewPost {...props} />} />
         <Route path="/post/edit/:id" component={EditPost} />
         <Route path="/photos" component={PhotoAlbum} />
