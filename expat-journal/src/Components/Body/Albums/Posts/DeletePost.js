@@ -47,16 +47,16 @@ class DeletePost extends React.Component {
 
   //delete request//
 
-  //   deleteNote = id => {
-  //     axios
-  //       .delete(`/post/delete/${id}`)
-  //       .then(response => {
-  //         this.props.history.push("/NotesList");
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //       });
-  //   };
+    // deleteNote = id => {
+    //   axios
+    //     .delete(`/post/delete/${id}`)
+    //     .then(response => {
+    //       this.props.history.push("/NotesList");
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // };
 
   toggleHidden() {
     this.setState({

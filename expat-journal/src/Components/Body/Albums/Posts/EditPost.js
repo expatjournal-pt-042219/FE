@@ -53,38 +53,38 @@ class EditPost extends Component {
     this.fetchPost(id);
   }
 
-//   fetchPost = id => {
-//     axios
-//       .get(`/post/get/${id}`)
-//       .then(response => {
-//         this.setState({
-//           postToEdit: response.data,
-//           loading: false
-//         });
-//       })
-//       .catch(err => {
-//         this.setState({ loading: false });
-//         console.log(err);
-//       });
-//   };
+  fetchPost = id => {
+    axios
+      .get(`/post/get/${id}`)
+      .then(response => {
+        this.setState({
+          postToEdit: response.data,
+          loading: false
+        });
+      })
+      .catch(err => {
+        this.setState({ loading: false });
+        console.log(err);
+      });
+  };
 
-//   submitEditedPost = e => {
-//     e.preventDefault();
-//     axios
-//       .put(
-//         `/post/edit/${
-//           this.props.match.params.id
-//         }`,
-//         {
-//           title: this.state.updatedTitle,
-//           textBody: this.state.updatedText
-//         }
-//       )
-//       .then(response => {
-//         this.props.history.push(`/post/${this.props.match.params.id}`);
-//       })
-//       .catch(err => console.log(err));
-//   };
+  submitEditedPost = e => {
+    e.preventDefault();
+    axios
+      .put(
+        `/post/edit/${
+          this.props.match.params.id
+        }`,
+        {
+          title: this.state.updatedTitle,
+          textBody: this.state.updatedText
+        }
+      )
+      .then(response => {
+        this.props.history.push(`/post/${this.props.match.params.id}`);
+      })
+      .catch(err => console.log(err));
+  };
 
   updatedTitle = e => {
     this.setState({

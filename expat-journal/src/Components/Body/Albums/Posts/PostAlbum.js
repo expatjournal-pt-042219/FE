@@ -3,7 +3,7 @@ import Post from "./Post";
 import styled from "styled-components";
 import { Route, Link, NavLink } from "react-router-dom";
 import axios from "axios";
-
+import NewPost from "./NewPostForm";
 //Styling//
 
 const Title = styled.h3`
@@ -50,33 +50,34 @@ class Posts extends Component {
 
   //Get request to get posts for the list.//
 
-  //   componentDidMount() {
-  //     axios
-  //       .get(``)
+    componentDidMount() {
+      axios
+        .get(`https://expat-lambda.herokuapp.com/api/user/posts/:id`)
 
-  //       .then(response => {
-  //         console.log(response);
-  //         this.setState({
-  //           posts: response.data,
-  //           loading: false
-  //         });
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
+        .then(response => {
+          console.log(response);
+          this.setState({
+            posts: response.data,
+            loading: false
+          });
+        })
+        .catch(err => console.log(err));
+    }
 
   render() {
     return (
       <StyledList>
-        <Header>Your Posts:</Header>
+        <Header>My Posts:</Header>
         {this.state.posts.map(post => {
           return (
             <StyledLink to={`Post/${post._id}`}>
               <Title>{post.title}</Title>
               <hr />
-              <Body>{post.textBody.substr(0, 100)} </Body>
+              <Body>{post.description.substr(0, 100)} </Body>
             </StyledLink>
           );
         })}
+        <NewPost/>
       </StyledList>
     );
   }
