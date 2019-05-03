@@ -5,6 +5,9 @@ import "./Authentication.css";
 import InputField from "./Input";
 import Button from "../Button";
 
+
+
+
 import axios from 'axios';
 
 class AuthenticationGroup extends React.Component {
@@ -36,6 +39,7 @@ class AuthenticationGroup extends React.Component {
         .then(response => {
           console.log("LOGIN RESPONSE", response.data)
           localStorage.setItem('token', (response.data.token));
+          console.log(this.props)
         })
         .catch(err => console.error('login error:', err))
     }
