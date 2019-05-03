@@ -51,26 +51,45 @@ class Posts extends Component {
   //Get request to get posts for the list.//
 
     componentDidMount() {
+      const token = localStorage.getItem('token');
+      const params =  {headers: {authorization: token}}
       axios
-        .get(`https://expat-lambda.herokuapp.com/api/user/posts/:id`)
-
+        // .get(`https://expat-lambda.herokuapp.com/api/user/posts`)
+        .get(`http://localhost:7777/api/user/posts/5`, params)
         .then(response => {
           console.log(response);
+          console.log(response.data)
           this.setState({
             posts: response.data,
             loading: false
+            
           });
         })
-        .catch(err => console.log(err));
+        .catch(error => console.log(error.response.data));
     }
+// viewPosts = id => {
+//     axios
+//     .get(`https://expat-lambda.herokuapp.com/api/user/posts/${id}`)
+//     .then(response => {
+//       console.log(response);
+//       this.setState({
+//         posts: response.data,
+//         loading: false
+//       });
+//     })
+//     .catch(err => console.log(err));
+//   }
 
   render() {
     return (
       <StyledList>
         <Header>My Posts:</Header>
         {this.state.posts.map(post => {
+          console.log('posts!!!', post)
           return (
-            <StyledLink to={`Post/${post._id}`}>
+            <StyledLink key={post.id} to={`Post/${post.id}`}>
+            <h5>user id: {post.user_id}</h5>
+            <h5>post id: {post.id}</h5>
               <Title>{post.title}</Title>
               <hr />
               <Body>{post.description.substr(0, 100)} </Body>
