@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import "./Authentication.css";
 import InputField from "./Input";
 import Button from "../Button";
-
+import cors from 'cors';
 
 
 
@@ -39,7 +39,8 @@ class AuthenticationGroup extends React.Component {
         .then(response => {
           console.log("LOGIN RESPONSE", response.data)
           localStorage.setItem('token', (response.data.token));
-          console.log(this.props)
+          // localStorage.setItem('user_id', (response.data.id));
+          // console.log(this.props)
         })
         .catch(err => console.error('login error:', err))
     }

@@ -93,7 +93,7 @@ class EditPost extends Component {
     });
   };
 
-  updateTeaxtBody = e => {
+  updateTextBody = e => {
     this.setState({
       updatedText: e.target.value,
       postToEdit: { description: e.target.value }
@@ -118,7 +118,7 @@ class EditPost extends Component {
             className="description"
             type="text"
             name="description"
-            onChange={this.updateTeaxtBody}
+            onChange={this.updateTextBody}
             value={this.state.postToEdit.description}
           />
           <Button className="button" type="submit">

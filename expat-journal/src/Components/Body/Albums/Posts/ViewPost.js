@@ -87,8 +87,8 @@ class ViewPost extends Component {
             )}
           </div>
           <PostBox>
-            <Title>{this.state.post.title}</Title>
-            <p>{this.state.post.description}</p>
+            <Title>{this.state.title}</Title>
+            <p>{this.state.description}</p>
           </PostBox>
         </EditDelete>
       </ViewPostContainer>

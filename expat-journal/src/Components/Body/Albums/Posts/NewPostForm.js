@@ -49,8 +49,8 @@ class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // user_id: null,
-      user_id: 5,
+      // id: this.state.id,
+      user_id: 35,
       title: "title",
       description: "text body"
     };
@@ -65,28 +65,30 @@ class NewPost extends Component {
     });
   };
 
-  addNew = (e) => {
+
+
+addNew = (e) => {
     e.preventDefault();
+    let address = `https://expat-lambda.herokuapp.com/api/posts`;
+    // const headers = { authorization: localStorage.getItem('token') };
     const token = localStorage.getItem('token');
-    const params =  {headers: {authorization: token}}
+    const params =  {headers: {Authorization: token}}
     console.log('token', token)
-    const newPost = {
-      user_id: this.state.user_id,
-      // user_id:  this.props.user_id,
-      title: this.state.title,
-      description: this.state.description
-    }
+    console.log("this.state", this.state)
+    // console.log('headers', headers)
+    // console.log('newpost!!!!!!!', newPost)
     axios
       .post(
-        // `https://expat-lambda.herokuapp.com/api/posts`,
-        `http://localhost/7777/api/posts`, params, newPost
+        address, this.state,
+        params
       )
       .then(response => {
-        console.log('response',response);
+        console.log('response',response.data);
         // this.setState(previousState => ({...this.state [previousState.state, this.state]}))
         // this.props.addNew(response);
-        this.props.addNew({...this.state [response.data.success]});
-        this.props.history.push('/')
+        // this.props.addNew({...this.state [response.data.success]});
+        // this.props.history.push('/PostAlbum')
+        window.location.reload()
       })
       .catch(error => console.log("post error message", error));
     // this.setState({
@@ -97,6 +99,7 @@ class NewPost extends Component {
     // });
   };
 
+
   render() {
     console.log('props...', this.props)
     return (
@@ -105,10 +108,10 @@ class NewPost extends Component {
           <H2> Create New Post: </H2>{" "}
           <Form className="form" onSubmit={this.addNew}>
           <InputTitle
-              className="id"
+              className="user_id"
               type="textarea"
-              name="id"
-              placeholder="id"
+              name="user_id"
+              placeholder="user_id"
               onChange={this.inputChangeHandler}
               value={this.state.user_id}
             />

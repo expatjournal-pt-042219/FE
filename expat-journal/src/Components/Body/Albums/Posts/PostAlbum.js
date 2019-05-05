@@ -51,11 +51,12 @@ class Posts extends Component {
   //Get request to get posts for the list.//
 
     componentDidMount() {
-      const token = localStorage.getItem('token');
-      const params =  {headers: {authorization: token}}
+      const headers = { authorization: localStorage.getItem('token') };
+      // const token = localStorage.getItem('token');
+      // const params =  {headers: {Authorization: token}}
       axios
-        // .get(`https://expat-lambda.herokuapp.com/api/user/posts`)
-        .get(`http://localhost:7777/api/user/posts/5`, params)
+        .get(`https://expat-lambda.herokuapp.com/api/user/posts/35`, {headers})
+        // .get(`http://localhost:7777/api/user/posts/5`, params)
         .then(response => {
           console.log(response);
           console.log(response.data)
@@ -87,7 +88,7 @@ class Posts extends Component {
         {this.state.posts.map(post => {
           console.log('posts!!!', post)
           return (
-            <StyledLink key={post.id} to={`Post/${post.id}`}>
+            <StyledLink key={post.user_id} to={`Post/${post.id}`}>
             <h5>user id: {post.user_id}</h5>
             <h5>post id: {post.id}</h5>
               <Title>{post.title}</Title>
