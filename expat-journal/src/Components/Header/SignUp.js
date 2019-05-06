@@ -31,7 +31,7 @@ class SignUp extends React.Component {
     let user = {username: this.state.username, password: this.state.password}
     console.log(user)
     axios
-      .post('https://expat-lambda.herokuapp.com/api/register', user)
+      .post('http://localhost/7777/api/register', user)
       .then(response => {
         console.log(response.data)
         localStorage.setItem('token', (response.data.token));
