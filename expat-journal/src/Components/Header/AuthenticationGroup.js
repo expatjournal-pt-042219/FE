@@ -21,7 +21,7 @@ class AuthenticationGroup extends React.Component {
       };
     }
 
-    
+
 
   //
   // const token= localStorage.getItem('jwt');
